@@ -1,0 +1,297 @@
+﻿2.4.3 and below st00fz
+
+camera pointer is a double pointer! first offset is 732c second offset points to what you want with the camera (because i'm lazy i am not going to expand on this, i will leave finding specific offsets to you) one offset i do know (thanks to kyonx) is 100 which is camera Z, if your interested in expanding on it, you might find this to be helpful.
+
+
+0x00C6ECCC camera pointer (2.4.3)
+0x00E29D28 2.4.3 player base
+
+
+2.4.3 static addresses
+0x008C8398 Mountain Climb angle default value 0.6427 (float)
+0x00BC4AF8 fall speed, 60.1480026245117 default value (float) set to to -1 and you fall up 
+0x008F7AC8 jump height/velocity -7.955547 default value (float)
+0x008C8458 gravity, 19.2911033630371 default value (double)
+0x00890608 game speed, 0.00100000004749745 default value (double)
+0x0089060B game speed 2, 1.02048421388683E253 default value (double) messing with this will freeze time
+0x00890750 speed of time, 1000 default value (double) time moves faster, you appear slower
+0x0088D5E8 rendering, 0.5 default value (double) fucks shit up. but fun to screw with, ( 0.2 and 2 D: )
+
+
+2.4.3 patches
+0x006A4B6E walk through GO's (highlight able). (0x968B1D74) default value 4 byte {HEX}. (0x968B1DEB) to walk through!
+0x006A49FE walk through GO's (non-highlight). (0x00B3840F) default value 4 byte {HEX}. (0x0000B4E9) to walk through!
+0x006AC9EA walk through buildings (0xC0320675) default value 4 byte {HEX}. (0xC0329090) to walk through!
+0x007B98DE jump patch (0x46F64175) default value 4 byte {HEX} change to (0x46F60075) for infinite jumps!
+
+Most movement related offsets *grey ones have a decent use*
+
+C00 points to vertical orientation, no default value (float)
+C20 points to movement state 0 default value (4 byte) {HEX}
+C23 points to movement type 128 default value (4 bytes)
+C28 points to starting X point, X coord default value (float)
+C2C points to starting Y point, Y coord default value (float)
+C30 points to height in water, no default value (float)
+C34 points to starting orientation , no default value (float) *point at which you start*
+C38 points to starting V orientation, no default value (float) *point at which you start*
+C3C points to odd movement thing, no default value (double)
+C40 points to forward movement angle, no default value (float)
+C44 points to forward movement angle, no default value (float)
+C48 points to turning movement angle, no default value (float)
+C4C points to turning movement angle, no default value (float)
+C50 points to turning movement angle, no default value (float)
+C54 points to allowed to turn while moving, no default value (float) *test*
+C5C points to fall time, 824 default value (4 byte) *effects how much fall damage you take*
+C60 points to starting Z point, Z coord, default (float) *jump starting position*
+C68 points to current speed, no default value (float) *effects all other speeds also while moving!*
+C6C points to walk speed 2.5 default value (float)
+C70 points to run(forward) 7 default value (float)
+C74 points to run(backward) 4.5 default value (float)
+C78 points to swim(forward) 4.72222185134888 default value (Float)
+C7C points to swim(backward) 2.5 default value (float)
+C80 points to flying speed 7 default value (float) *changes forward and backward*
+C84 points to flying speed(backward) 4.5 default value (float)
+C88 points to turning speed, 3.14 default value (float)
+C8C points to jump height, -7.955547 default value *after jump* (float)
+
+CB0 points to player... thing, 1 default value (float) *set to 200 to climb most things similar to wall climb* (still tryin ta figure this 1 out)
+
+player size
+CA8 points to width (as in how fat), 0.2777 default value (float) *set it to 0 to noclip through ANYTHING (includes floor XD)*
+CAC points to height (as in how tall), 2.25 default value (float)
+9C points to player scale, 1 default value (float)
+
+
+location
+BEC points to map ID, no default value (4 byte) *not entirely sure*
+BF0 points to X coord, no default value (float)
+BF4 points to Y coord, no default value (float)
+BF8 points to Z coord, no default value (float)
+BFC points to orientation, no default value (float)
+
+
+MISC
+3AC8 points to hunter tracking, 0 default value (byte)
+28E4 points to emote state, 0 default value (4 byte)
+26CC points to player faction, no default value (4 byte)
+F40 points to casting spell, 0 default value (4 byte)
+
+2640 points to my GUID, no default value (4/8 byte) {HEX}
+2680 points to target GUID, no default value (4/8 byte) {HEX}
+
+26D0 points to player race, no default value (byte)
+26D1 points to player class, no default value (byte)
+26D2 points to player sex, no default value (byte)
+26D3 points to power type, no default value (byte)
+26F8 points to playerState, 8 default value (4 byte) {HEX}
+
+0x00DA563C address
+80 points to can mount, no default value (byte)
+
+
+2.4.3 VMT pointers
+
+although these address aren't constant through patches they will always be at the start of the specific structure in memory (ie, if you searched for the player constant in CE or some other debugger, all the addresses that appear will be players around you *or you*)
+
+0x008C32B8 PLAYER VMT pointer
+0x008C5580 UNIT VMT pointer
+0x008C3A70 CONTAINER VMT pointer
+0x008C3B60 ITEM VMT pointer
+0x008CFF90 M2 VMT pointer
+0x008C4AF0 GAME_OBJECT VMT pointer
+0x008C3860 DYNAMIC_OBJECT VMT pointer
+0x008C39B8 CORPSE VMT pointer
+
+to use these simply open up CE, click the add address manually button, select pointer and use the base address (which i posted at the top) as the address and these number/letter combo's (such as C6C for walk speed) to get the actual value.
+
+here are also some notes i took on it.
+
+
+
+
+
+
+
+*notes*
+
+movement state
+
+movement state can be used to unroot you, if you ever find yourself rooted. just set it to 00000000 (8 0's) and you will be unrooted, this counts for logging out root/gm root/griffen riding root (unrooting yourself while on a griffen has some weird effects,)
+
+0x1 = Moving Forward
+0x2 = Moving Backward
+0x4 = Strafing Left
+0x8 = Strafing Right
+0x10 = Turning Left
+0x20 = Turning Right
+0x100 = Walking
+0x400 = floaty thing
+0x1000 = falling
+0x4000 = Fall Forwards
+0x8000 = Fall Backwards
+0x2000 = Freefall/Jumping
+0x10000 = Strafing while jumping
+0x200000 = Swimming
+0x10000000 = Spirit Form
+0x80000000 = Unknown
+
+*note: 0x400 in particular interests me, it lets you levitate at the same height, you can go up but never down, it basically lets you walk on air at the same height you are at, (example, im on a cliff. i walk off cliff, instead of falling, i still walk at the same height as before)*
+
+movement type
+
+1 = flyhack (can land)
+2 = flyhack (can't land *swim-like*)
+16 = whisp * walk on water*
+64 = floating (levitate)
+80 = (floaty dead?)
+128 = normal
+129 = (flyhack actual gm-like value)
+130 = (flyhack *theres alot of different ones heres another, swim-like*)
+144 = (dead) *walk on water*
+160 = slow fall
+
+notes: playerState *note* this is the real player state.
+0x000008 not in combat *can be used to fake not in combat
+0x00000C logging out *can be used to wall-climb
+0x001008 pvp toggled * can be used to either force others to be pvp toggled >:3
+0x080008 in combat
+0x10000C on a taxi
+0x400008 blinded
+0x0C0008 stunned
+
+
+
+hunter tracking
+
+0 = Nothing
+1 = Beasts
+2 = Dragonkin
+4 = Demons
+8 = Elementals
+16 = Giants
+32 = Undead
+64 = Humanoids
+132 = Misc
+255 = Everything
+
+
+
+emote states
+
+0 = None	 
+1 = Talk	
+2 = Bow	
+3 = Wave
+4 = Cheer
+5 = Exclamation
+6 = Question
+7 = Eat
+10 = Emote State Dance
+11 = Laugh
+12 = Emote State Sleep
+13 = Emote State Sit
+14 = Rude	
+15 = Roar
+16 = Kneel
+17 = Kiss
+18 = Cry
+19 = Chicken
+20 = Beg
+21 = Applouad
+22 = Shout
+23 = Flex
+24 = Shy
+25 = Point	
+26 = stand
+27 = ready unarmed
+28 = work
+29 = point
+30 = none
+33 = Wound
+34 = wound critical
+35 = attack unarmed
+36 = attack 1h
+37 = attack 2h tight
+38 = attack 2h loose
+39 = parry unarmed
+43 = parry shield
+44 = ready unarmed
+45 = ready 1h
+48 = ready bow
+50 = spell precast
+51 = spell cast
+53 = battle roar
+54 = special attack 1h
+60 = Kick
+61 = attack thrown
+64 = Stun
+65 = Dead	
+66 = Salute
+68 = Kneel
+69 = use standing
+70 = wave no sheath
+71 = cheer no sheath
+92 = eat no sheath
+93 = stun no sheath
+94 = Dance
+113 = salute no sheath
+133 = use standing no sheath
+153 = laugh no sheath
+173 = work no sheath
+193 = spell precast
+213 = ready rifle
+214 = ready rifle
+233 = work no sheath mining
+234 = work no sheath choping
+253 = lightOff (old)
+254 =LiftOff
+273 = Yes
+274 = No
+275 = Train	
+293 = Land
+313 = at ease
+333 = ready 1h
+353 = spell kneel start
+373 = submerged
+374 = sumberge
+375 = ready 2h
+376 = ready bow
+377 = MountSpecial
+378 = Talk
+379 = Fishing
+380 = Fishing
+381 = Loot
+382 = whirlwind
+383 = drowned
+384 = hold bow
+385 = hold rifle
+386 = hold thrown
+387 = drown
+388 = stomp
+389 = attack off
+390 = attack off pierce
+391 = roar
+392 = laugh
+393 = creature special
+394 = JumpLandRun
+395 = JumpLand
+396 = talk no sheath
+397 = point no sheath
+398 = cannibalize
+399 = Jumpstart
+400 = DanceSpecial (Human Only)
+401 = DanceSpecial (Human Only)
+402 = custom spell 1
+403 = custom spell 2
+404 = custom spell 3
+405 = custom spell 4
+406 = custom spell 5
+407 = custom spell 6
+408 = custom spell 7
+409 = custom spell 8
+410 = custom spell 9
+411 = custom spell 10
+412 = Execlaim
+415 = Sit Chair
+
+also, the lower the value of the mountain climb angle the steeper the angle you can climb.
