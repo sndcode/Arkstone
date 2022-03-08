@@ -25,11 +25,11 @@ namespace Arkstone
 
         //Pointer
         public static int tbc_player_falldamage_pointer 
-            = classMemory.GetPointerAddress(0x00E29D28, new int[] { 0xC5C });
+            = classMemory.GetPointerAddress(tbc_player_base, new int[] { 0xC5C });
         public static int tbc_player_speed_pointer 
-            = classMemory.GetPointerAddress(0x00E29D28, new int[] { 0xC70 });
+            = classMemory.GetPointerAddress(tbc_player_base, new int[] { 0xC70 });
         public static int tbc_player_flyspeed_pointer 
-            = classMemory.GetPointerAddress(0x00E29D28, new int[] { 0xC80 });
+            = classMemory.GetPointerAddress(tbc_player_base, new int[] { 0xC80 });
         
     }
 }
