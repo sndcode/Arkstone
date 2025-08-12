@@ -29,14 +29,13 @@ namespace Arkstone
         /////////////////////
         //Process Functions//
         /////////////////////
-         
-    public static IntPtr GetProcessHandle() //Find Process
+
+        public static IntPtr GetProcessHandle() //Find Process
         {
             try
             {
                 Process[] ProcList = Process.GetProcessesByName("Wow");
                 pHandle = ProcList[0].Handle;
-
                 return pHandle;
             }
             catch
@@ -95,7 +94,7 @@ namespace Arkstone
             WriteProcessMemory(GetProcessHandle(), Address, Bytes, Bytes.Length);
         }
 
-        public static void WriteFloat(int Address, float Value) //Write a Fload
+        public static void WriteFloat(int Address, float Value) //Write a Float
         {
             WriteProcessMemory(GetProcessHandle(), Address, BitConverter.GetBytes(Value), 4);
         }
@@ -105,12 +104,12 @@ namespace Arkstone
             WriteProcessMemory(GetProcessHandle(), Address, BitConverter.GetBytes(Value), 8);
         }
 
-        public static void WriteInteger(int Address, int Value, int size) //Write an Integer
+        public static void WriteInt(int Address, int Value) //Write an Integer (4 Bytes)
         {
-            WriteProcessMemory(GetProcessHandle(), Address, BitConverter.GetBytes(Value), size);
+            WriteProcessMemory(GetProcessHandle(), Address, BitConverter.GetBytes(Value), 4);
         }
 
-        public static void WriteString(int Address, string String) //Write an Integer
+        public static void WriteString(int Address, string String) //Write String (ASCII)
         {
             byte[] Buffer = new ASCIIEncoding().GetBytes(String);
             WriteProcessMemory(GetProcessHandle(), Address, Buffer, Buffer.Length);
@@ -120,39 +119,39 @@ namespace Arkstone
         /////////////////////
         //Reading Functions//
         /////////////////////
-        public static byte[] ReadByte(int Address, int Length) //ReadBytes
+        public static byte[] ReadBytes(int Address, int Length) //Read Bytes
         {
             byte[] Buffer = new byte[Length];
             ReadProcessMemory(GetProcessHandle(), Address, Buffer, Length);
             return Buffer;
         }
 
-        public static float ReadFloat(int Address) //ReadFloat
+        public static float ReadFloat(int Address) //Read Float
         {
-            byte[] Buffer = new byte[4]; ;
+            byte[] Buffer = new byte[4];
             ReadProcessMemory(GetProcessHandle(), Address, Buffer, 4);
             return BitConverter.ToSingle(Buffer, 0);
         }
 
-        public static double ReadDouble(int Address) //ReadDouble
+        public static double ReadDouble(int Address) //Read Double
         {
-            byte[] Buffer = new byte[8]; ;
+            byte[] Buffer = new byte[8];
             ReadProcessMemory(GetProcessHandle(), Address, Buffer, 8);
             return BitConverter.ToDouble(Buffer, 0);
         }
 
-        public static int ReadInteger(int Address, int Length) //ReadInteger
+        public static int ReadInt(int Address) //Read Integer (4 Bytes)
         {
-            byte[] Buffer = new byte[Length];
-            ReadProcessMemory(GetProcessHandle(), Address, Buffer, Length);
+            byte[] Buffer = new byte[4];
+            ReadProcessMemory(GetProcessHandle(), Address, Buffer, 4);
             return BitConverter.ToInt32(Buffer, 0);
         }
 
-        public static string ReadString(int Address, int size) //ReadDouble
+        public static string ReadString(int Address, int Size) //Read String (ASCII)
         {
-            byte[] Buffer = new byte[size]; ;
-            ReadProcessMemory(GetProcessHandle(), Address, Buffer, size);
-            return new ASCIIEncoding().GetString(Buffer);
+            byte[] Buffer = new byte[Size];
+            ReadProcessMemory(GetProcessHandle(), Address, Buffer, Size);
+            return Encoding.ASCII.GetString(Buffer).TrimEnd('\0');
         }
     }
 }

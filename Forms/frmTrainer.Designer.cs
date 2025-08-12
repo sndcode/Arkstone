@@ -61,11 +61,14 @@
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.label3 = new System.Windows.Forms.Label();
             this.lblFlySpeed = new System.Windows.Forms.Label();
@@ -78,18 +81,22 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.txt_locName = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txt_rotation = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.txt_mapID = new System.Windows.Forms.TextBox();
+            this.txt_z = new System.Windows.Forms.TextBox();
+            this.txt_y = new System.Windows.Forms.TextBox();
+            this.txt_x = new System.Windows.Forms.TextBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -298,7 +305,6 @@
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 8;
             this.label1.Text = "Faction";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button3
             // 
@@ -338,9 +344,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBox11);
             this.groupBox1.Controls.Add(this.checkBox8);
             this.groupBox1.Controls.Add(this.checkBox7);
             this.groupBox1.Controls.Add(this.checkBox6);
+            this.groupBox1.Controls.Add(this.checkBox9);
             this.groupBox1.Controls.Add(this.checkBox5);
             this.groupBox1.Controls.Add(this.checkBox4);
             this.groupBox1.Controls.Add(this.checkBox3);
@@ -348,7 +356,7 @@
             this.groupBox1.Controls.Add(this.checkBox1);
             this.groupBox1.Location = new System.Drawing.Point(36, 281);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(138, 216);
+            this.groupBox1.Size = new System.Drawing.Size(138, 226);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hacks";
@@ -387,6 +395,17 @@
             this.checkBox6.Text = "Noclip ";
             this.checkBox6.UseVisualStyleBackColor = true;
             this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(6, 199);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(99, 17);
+            this.checkBox9.TabIndex = 31;
+            this.checkBox9.Text = "NO Falldamage";
+            this.checkBox9.UseVisualStyleBackColor = true;
+            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
             // 
             // checkBox5
             // 
@@ -436,6 +455,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.checkBox10);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.button3);
@@ -448,6 +469,27 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Debug Stuff";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(71, 111);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(91, 32);
+            this.button7.TabIndex = 38;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
+            // checkBox10
+            // 
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Location = new System.Drawing.Point(15, 182);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(74, 43);
+            this.checkBox10.TabIndex = 22;
+            this.checkBox10.Text = "I KNOW \r\nWHAT IM\r\nDOING";
+            this.checkBox10.UseVisualStyleBackColor = true;
+            this.checkBox10.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
             // 
             // trackBar2
             // 
@@ -547,16 +589,16 @@
             this.groupBox3.Controls.Add(this.trackBar3);
             this.groupBox3.Location = new System.Drawing.Point(36, 38);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(311, 237);
+            this.groupBox3.Size = new System.Drawing.Size(231, 237);
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Speed Hacks";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(19, 123);
+            this.button5.Location = new System.Drawing.Point(207, 187);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(100, 23);
+            this.button5.Size = new System.Drawing.Size(97, 23);
             this.button5.TabIndex = 20;
             this.button5.Text = "TELEPORT";
             this.button5.UseVisualStyleBackColor = true;
@@ -564,18 +606,21 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.checkBox9);
-            this.groupBox4.Controls.Add(this.listBox1);
+            this.groupBox4.Controls.Add(this.button8);
+            this.groupBox4.Controls.Add(this.btn_Save);
+            this.groupBox4.Controls.Add(this.txt_locName);
+            this.groupBox4.Controls.Add(this.label13);
+            this.groupBox4.Controls.Add(this.txt_rotation);
             this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.textBox5);
-            this.groupBox4.Controls.Add(this.textBox4);
-            this.groupBox4.Controls.Add(this.textBox3);
-            this.groupBox4.Controls.Add(this.textBox2);
+            this.groupBox4.Controls.Add(this.txt_mapID);
+            this.groupBox4.Controls.Add(this.txt_z);
+            this.groupBox4.Controls.Add(this.txt_y);
+            this.groupBox4.Controls.Add(this.txt_x);
             this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Location = new System.Drawing.Point(192, 281);
             this.groupBox4.Name = "groupBox4";
@@ -584,27 +629,56 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "EXPERIMENTAL";
             // 
-            // listBox1
+            // button8
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
-            "GM Island",
-            "OG",
-            "Stormwind",
-            "Westfall",
-            "Durotar"});
-            this.listBox1.Location = new System.Drawing.Point(194, 32);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 173);
-            this.listBox1.TabIndex = 30;
+            this.button8.Location = new System.Drawing.Point(195, 84);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(119, 23);
+            this.button8.TabIndex = 37;
+            this.button8.Text = "LOAD";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(194, 58);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(120, 23);
+            this.btn_Save.TabIndex = 36;
+            this.btn_Save.Text = "SAVE";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // txt_locName
+            // 
+            this.txt_locName.Location = new System.Drawing.Point(194, 32);
+            this.txt_locName.Name = "txt_locName";
+            this.txt_locName.Size = new System.Drawing.Size(120, 20);
+            this.txt_locName.TabIndex = 35;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(125, 130);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(30, 13);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "ROT";
+            // 
+            // txt_rotation
+            // 
+            this.txt_rotation.Location = new System.Drawing.Point(19, 123);
+            this.txt_rotation.Name = "txt_rotation";
+            this.txt_rotation.Size = new System.Drawing.Size(100, 20);
+            this.txt_rotation.TabIndex = 33;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(19, 151);
+            this.button6.Location = new System.Drawing.Point(19, 153);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(100, 23);
             this.button6.TabIndex = 29;
-            this.button6.Text = "Copy Position";
+            this.button6.Text = "READ POS";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
@@ -640,9 +714,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(191, 16);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(78, 13);
+            this.label12.Size = new System.Drawing.Size(79, 13);
             this.label12.TabIndex = 25;
-            this.label12.Text = "Teleport Points";
+            this.label12.Text = "Location Name";
             // 
             // label8
             // 
@@ -653,44 +727,44 @@
             this.label8.TabIndex = 25;
             this.label8.Text = "MapID";
             // 
-            // textBox5
+            // txt_mapID
             // 
-            this.textBox5.Location = new System.Drawing.Point(19, 97);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 24;
+            this.txt_mapID.Location = new System.Drawing.Point(19, 97);
+            this.txt_mapID.Name = "txt_mapID";
+            this.txt_mapID.Size = new System.Drawing.Size(100, 20);
+            this.txt_mapID.TabIndex = 24;
             // 
-            // textBox4
+            // txt_z
             // 
-            this.textBox4.Location = new System.Drawing.Point(19, 71);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 23;
+            this.txt_z.Location = new System.Drawing.Point(19, 71);
+            this.txt_z.Name = "txt_z";
+            this.txt_z.Size = new System.Drawing.Size(100, 20);
+            this.txt_z.TabIndex = 23;
             // 
-            // textBox3
+            // txt_y
             // 
-            this.textBox3.Location = new System.Drawing.Point(19, 45);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 22;
+            this.txt_y.Location = new System.Drawing.Point(19, 45);
+            this.txt_y.Name = "txt_y";
+            this.txt_y.Size = new System.Drawing.Size(100, 20);
+            this.txt_y.TabIndex = 22;
             // 
-            // textBox2
+            // txt_x
             // 
-            this.textBox2.Location = new System.Drawing.Point(19, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 21;
+            this.txt_x.Location = new System.Drawing.Point(19, 19);
+            this.txt_x.Name = "txt_x";
+            this.txt_x.Size = new System.Drawing.Size(100, 20);
+            this.txt_x.TabIndex = 21;
             // 
-            // checkBox9
+            // checkBox11
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(19, 180);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(99, 17);
-            this.checkBox9.TabIndex = 31;
-            this.checkBox9.Text = "NO Falldamage";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            this.checkBox9.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(64, 42);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(45, 17);
+            this.checkBox11.TabIndex = 32;
+            this.checkBox11.Text = "Fly2";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            this.checkBox11.CheckedChanged += new System.EventHandler(this.checkBox11_CheckedChanged);
             // 
             // frmTrainer
             // 
@@ -785,13 +859,21 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox txt_mapID;
+        private System.Windows.Forms.TextBox txt_z;
+        private System.Windows.Forms.TextBox txt_y;
+        private System.Windows.Forms.TextBox txt_x;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.TextBox txt_locName;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txt_rotation;
+        private System.Windows.Forms.Button btn_Load;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.CheckBox checkBox11;
     }
 }
 

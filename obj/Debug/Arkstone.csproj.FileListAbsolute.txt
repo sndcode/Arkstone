@@ -30,3 +30,14 @@ J:\CLOUD\coding\Arkstone\Arkstone\obj\Debug\Arkstone.pdb
 J:\CLOUD\coding\Arkstone\Arkstone\bin\Debug\Arkstone.exe.config
 J:\CLOUD\coding\Arkstone\Arkstone\bin\Debug\Arkstone.exe
 J:\CLOUD\coding\Arkstone\Arkstone\bin\Debug\Arkstone.pdb
+C:\Users\maurice\Desktop\Arkstone-main\bin\Debug\Arkstone.exe.config
+C:\Users\maurice\Desktop\Arkstone-main\bin\Debug\Arkstone.exe
+C:\Users\maurice\Desktop\Arkstone-main\bin\Debug\Arkstone.pdb
+C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.csproj.AssemblyReference.cache
+C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.frmLoader.resources
+C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.frmTrainer.resources
+C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.Properties.Resources.resources
+C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.csproj.GenerateResource.cache
+C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.csproj.CoreCompileInputs.cache
+C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.exe
+C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.pdb

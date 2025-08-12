@@ -1,7 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Text;
 using System.Threading;
+using System.Timers;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Timer = System.Threading.Timer;
 
 namespace Arkstone
 {
@@ -33,8 +41,8 @@ namespace Arkstone
              Y            = classMemory.ReadFloat(classOffsets.tbc_coord_y);
              Z            = classMemory.ReadFloat(classOffsets.tbc_coord_z);
              Rotation     = classMemory.ReadFloat(classOffsets.tbc_player_rotation);
-             MapID        = classMemory.ReadInteger(classOffsets.tbc_coor_mapid,255);
-             GCursor      = classMemory.ReadInteger(classOffsets.tbc_sys_cursor, 255);
+             MapID        = classMemory.ReadInt(classOffsets.tbc_coor_mapid);
+             GCursor      = classMemory.ReadInt(classOffsets.tbc_sys_cursor);
              Charname     = classMemory.ReadString(classOffsets.tbc_player_name, 255);
             SpiderValue   = classMemory.ReadFloat(classOffsets.tbc_player_wallangle);
             fallSpeed     = classMemory.ReadFloat(classOffsets.tbc_player_fallspeed);
@@ -42,11 +50,13 @@ namespace Arkstone
             falldamage    = classMemory.ReadFloat(classOffsets.tbc_player_falldamage_pointer);
             playerSpeed   = classMemory.ReadFloat(classOffsets.tbc_player_speed_pointer);
             flySpeed      = classMemory.ReadFloat(classOffsets.tbc_player_flyspeed_pointer);
+            
 
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            classMemory.WriteFloat(0x008C8398, 0.01f);
+            groupBox1.Enabled = true;
+            //classMemory.WriteFloat(0x008C8398, 0.01f);
         }
 
         private void readPlayerbaseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,7 +139,7 @@ namespace Arkstone
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(classMemory.ReadInteger(classOffsets.tbc_player_wallangle, 255).ToString());
+            MessageBox.Show(classMemory.ReadInt(classOffsets.tbc_player_wallangle).ToString());
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -154,6 +164,7 @@ namespace Arkstone
             #else
             groupBox2.Enabled = false;       
             #endif
+            groupBox4.Enabled = false;
 
             m_ReadMemory();
         }
@@ -170,11 +181,6 @@ namespace Arkstone
             textBox1.Text = pointer.ToString();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox2.Checked == true)
@@ -187,8 +193,32 @@ namespace Arkstone
             }
         }
 
+        private Timer freezeTimer;
+        private int pointer;
+
+        public void ToggleFreeze(bool enabled)
+        {
+            pointer = classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xC23 });
+
+            if (enabled)
+            {
+                freezeTimer = new Timer(_ =>
+                {
+                    classMemory.WriteBytes(pointer, new byte[] { 129 });
+                }, null, 0, 1000); // Alle 1000ms (1 Sekunde) Wert setzen
+            }
+            else
+            {
+                freezeTimer?.Dispose();
+                classMemory.WriteBytes(pointer, new byte[] { 129 });
+
+                int pointer_fall = classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xC20 });
+                classMemory.WriteDouble(pointer_fall, 1000);
+            }
+        }
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
+            //OG Method - Works on most emulators but not on custom cores.
             if (checkBox3.Checked == true)
             {
                 int pointer = classMemory.GetPointerAddress(0x00E29D28, new int[] { 0xC23 });
@@ -199,7 +229,7 @@ namespace Arkstone
                 int pointer = classMemory.GetPointerAddress(0x00E29D28, new int[] { 0xC23 });
                 classMemory.WriteBytes(pointer, new byte[] { 128 });
                 //Set to falling again otherwise player will walk on air
-                int pointer_fall = classMemory.GetPointerAddress(classOffsets.tbc_player_base , new int[] { 0xC20 });
+                int pointer_fall = classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xC20 });
                 classMemory.WriteDouble(pointer_fall, 1000);
             }
         }
@@ -304,15 +334,37 @@ namespace Arkstone
 
         private void button6_Click(object sender, EventArgs e)
         {
-            textBox2.Text = X.ToString();
-            textBox3.Text = Y.ToString();
-            textBox4.Text = Z.ToString();
-            textBox5.Text = MapID.ToString();
+            txt_x.Text = X.ToString();
+            txt_y.Text = Y.ToString();
+            txt_z.Text = Z.ToString();
+            txt_mapID.Text = MapID.ToString();
+            txt_rotation.Text = Rotation.ToString();
         }
-
+        // Spielerkoordinaten setzen
+        void SetPlayerPosition(float x, float y, float z, int mid , float rtv)
+        {
+            //Set MapID
+            classMemory.WriteInt(classOffsets.tbc_coor_mapid, mid);
+            //Set X Y Z 
+            int player_x = classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xBF0 });
+            classMemory.WriteFloat(player_x, x);
+            int player_y = classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xBF4 });
+            classMemory.WriteFloat(player_y, y);
+            int player_z = classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xBF8 });
+            classMemory.WriteFloat(player_z, z);
+            //Set Rotation
+            classMemory.WriteFloat(classOffsets.tbc_player_rotation, rtv);
+        }
         private void button5_Click(object sender, EventArgs e)
         {
-            //IHNI
+            float newx              = float.Parse(txt_x.Text.Replace(',', '.'), CultureInfo.InvariantCulture);
+            float newy              = float.Parse(txt_y.Text.Replace(',', '.'), CultureInfo.InvariantCulture);
+            float newz              = float.Parse(txt_z.Text.Replace(',', '.'), CultureInfo.InvariantCulture);
+            float newRotation       = float.Parse(txt_rotation.Text.Replace(',', '.'), CultureInfo.InvariantCulture);
+            int mid                 = Convert.ToInt32(txt_mapID.Text);
+
+            SetPlayerPosition(newx, newy, newz,mid, newRotation);
+
         }
 
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
@@ -324,6 +376,97 @@ namespace Arkstone
             else
             {
                 classMemory.WriteDouble(classOffsets.tbc_player_falldamage_pointer, 824);
+            }
+        }
+
+        private void checkBox10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox10.Checked == true)
+            {
+                groupBox4.Enabled = true;
+            }
+            else if (checkBox10.Checked == false)
+            {
+                groupBox4.Enabled = false;
+            }
+        }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            double x = classMemory.ReadFloat(classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xBF0 }));
+            double y = classMemory.ReadFloat(classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xBF4 }));
+            double z = classMemory.ReadFloat(classMemory.GetPointerAddress(classOffsets.tbc_player_base, new int[] { 0xBF8 }));
+
+            // Array mit den Daten erstellen, mit invariant culture
+            string[] data = new string[]
+            {
+                x.ToString(CultureInfo.InvariantCulture),
+                y.ToString(CultureInfo.InvariantCulture),
+                z.ToString(CultureInfo.InvariantCulture),
+                MapID.ToString(),
+                Rotation.ToString(CultureInfo.InvariantCulture)
+            };
+
+            string locationName = txt_locName.Text;
+            string folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Application.StartupPath + "\\teleport_locations\\");
+
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            // Dateipfad neben Programm
+            string filePath = folderPath + locationName + ".txt";
+
+            // Datei schreiben mit Semikolon als Trennzeichen
+            File.WriteAllText(filePath, string.Join(";", data));
+
+            MessageBox.Show($"Daten für {locationName} gespeichert!");
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                ofd.Filter = "Text files (*.txt)|*.txt";
+                ofd.Title = "Wähle eine gespeicherte Position";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string content = File.ReadAllText(ofd.FileName);
+                    string[] parts = content.Split(';');
+
+                    if (parts.Length >= 5)
+                    {
+                        txt_x.Text = parts[0];
+                        txt_y.Text = parts[1];
+                        txt_z.Text = parts[2];
+                        txt_mapID.Text = parts[3];
+                        txt_rotation.Text = parts[4];
+                        txt_locName.Text = Path.GetFileName(ofd.FileName);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ungültiges Format der Datei!");
+                    }
+                }
+            }
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            //int pointer = classMemory.GetPointerAddress(0x00DA563C, new int[] { 0x1 });
+            //classMemory.WriteBytes(pointer, new byte[] { 0 });
+        }
+
+        private void checkBox11_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox11.Checked)
+            {
+                ToggleFreeze(true);
+            }
+            else
+            {
+                ToggleFreeze(false);
             }
         }
     }
