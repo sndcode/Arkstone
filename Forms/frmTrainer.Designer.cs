@@ -36,6 +36,7 @@
             this.killWoWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attachD3DHookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attachAntiAFKToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alwaysOnTOPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readPlayerbaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readHacksValuesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
@@ -67,6 +69,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.button7 = new System.Windows.Forms.Button();
             this.checkBox10 = new System.Windows.Forms.CheckBox();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
@@ -96,7 +99,6 @@
             this.txt_z = new System.Windows.Forms.TextBox();
             this.txt_y = new System.Windows.Forms.TextBox();
             this.txt_x = new System.Windows.Forms.TextBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -136,7 +138,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(533, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(501, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -145,7 +147,8 @@
             this.processToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.killWoWToolStripMenuItem,
             this.attachD3DHookToolStripMenuItem,
-            this.attachAntiAFKToolStripMenuItem});
+            this.attachAntiAFKToolStripMenuItem,
+            this.alwaysOnTOPToolStripMenuItem});
             this.processToolStripMenuItem.Name = "processToolStripMenuItem";
             this.processToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.processToolStripMenuItem.Text = "Process";
@@ -153,7 +156,7 @@
             // killWoWToolStripMenuItem
             // 
             this.killWoWToolStripMenuItem.Name = "killWoWToolStripMenuItem";
-            this.killWoWToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.killWoWToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.killWoWToolStripMenuItem.Text = "Kill WoW";
             this.killWoWToolStripMenuItem.Click += new System.EventHandler(this.killWoWToolStripMenuItem_Click);
             // 
@@ -161,15 +164,22 @@
             // 
             this.attachD3DHookToolStripMenuItem.Enabled = false;
             this.attachD3DHookToolStripMenuItem.Name = "attachD3DHookToolStripMenuItem";
-            this.attachD3DHookToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.attachD3DHookToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.attachD3DHookToolStripMenuItem.Text = "Attach D3D Hook";
             // 
             // attachAntiAFKToolStripMenuItem
             // 
             this.attachAntiAFKToolStripMenuItem.Name = "attachAntiAFKToolStripMenuItem";
-            this.attachAntiAFKToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.attachAntiAFKToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.attachAntiAFKToolStripMenuItem.Text = "Attach AntiAFK";
             this.attachAntiAFKToolStripMenuItem.Click += new System.EventHandler(this.attachAntiAFKToolStripMenuItem_Click);
+            // 
+            // alwaysOnTOPToolStripMenuItem
+            // 
+            this.alwaysOnTOPToolStripMenuItem.Name = "alwaysOnTOPToolStripMenuItem";
+            this.alwaysOnTOPToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.alwaysOnTOPToolStripMenuItem.Text = "Always on TOP";
+            this.alwaysOnTOPToolStripMenuItem.Click += new System.EventHandler(this.alwaysOnTOPToolStripMenuItem_Click);
             // 
             // memoryToolStripMenuItem
             // 
@@ -182,7 +192,6 @@
             // 
             // readPlayerbaseToolStripMenuItem
             // 
-            this.readPlayerbaseToolStripMenuItem.Enabled = false;
             this.readPlayerbaseToolStripMenuItem.Name = "readPlayerbaseToolStripMenuItem";
             this.readPlayerbaseToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.readPlayerbaseToolStripMenuItem.Text = "Read Playerbase";
@@ -194,6 +203,7 @@
             this.readHacksValuesToolStripMenuItem.Name = "readHacksValuesToolStripMenuItem";
             this.readHacksValuesToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.readHacksValuesToolStripMenuItem.Text = "Read Hacks Values";
+            this.readHacksValuesToolStripMenuItem.Click += new System.EventHandler(this.readHacksValuesToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -208,13 +218,13 @@
             // 
             this.updateToolStripMenuItem.Enabled = false;
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateToolStripMenuItem.Text = "Update";
             // 
             // infoToolStripMenuItem
             // 
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.infoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.infoToolStripMenuItem.Text = "Info";
             this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
             // 
@@ -239,7 +249,7 @@
             this.toolStripStatusLabel5});
             this.statusStrip1.Location = new System.Drawing.Point(0, 510);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(533, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(501, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -354,12 +364,23 @@
             this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.checkBox2);
             this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Location = new System.Drawing.Point(36, 281);
+            this.groupBox1.Location = new System.Drawing.Point(7, 280);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(138, 226);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hacks";
+            // 
+            // checkBox11
+            // 
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Location = new System.Drawing.Point(64, 42);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(45, 17);
+            this.checkBox11.TabIndex = 32;
+            this.checkBox11.Text = "Fly2";
+            this.checkBox11.UseVisualStyleBackColor = true;
+            this.checkBox11.CheckedChanged += new System.EventHandler(this.checkBox11_CheckedChanged);
             // 
             // checkBox8
             // 
@@ -455,6 +476,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.groupBox2.Controls.Add(this.checkBox12);
             this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.checkBox10);
             this.groupBox2.Controls.Add(this.button4);
@@ -463,12 +486,22 @@
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Location = new System.Drawing.Point(353, 38);
+            this.groupBox2.Location = new System.Drawing.Point(244, 37);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(168, 237);
+            this.groupBox2.Size = new System.Drawing.Size(248, 237);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Debug Stuff";
+            // 
+            // checkBox12
+            // 
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Location = new System.Drawing.Point(67, 164);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(86, 17);
+            this.checkBox12.TabIndex = 22;
+            this.checkBox12.Text = "checkBox12";
+            this.checkBox12.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
@@ -587,7 +620,7 @@
             this.groupBox3.Controls.Add(this.lblFlySpeed);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.trackBar3);
-            this.groupBox3.Location = new System.Drawing.Point(36, 38);
+            this.groupBox3.Location = new System.Drawing.Point(7, 37);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(231, 237);
             this.groupBox3.TabIndex = 19;
@@ -596,9 +629,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(207, 187);
+            this.button5.Location = new System.Drawing.Point(195, 187);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(97, 23);
+            this.button5.Size = new System.Drawing.Size(119, 23);
             this.button5.TabIndex = 20;
             this.button5.Text = "TELEPORT";
             this.button5.UseVisualStyleBackColor = true;
@@ -622,7 +655,7 @@
             this.groupBox4.Controls.Add(this.txt_y);
             this.groupBox4.Controls.Add(this.txt_x);
             this.groupBox4.Controls.Add(this.button5);
-            this.groupBox4.Location = new System.Drawing.Point(192, 281);
+            this.groupBox4.Location = new System.Drawing.Point(163, 280);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(329, 216);
             this.groupBox4.TabIndex = 21;
@@ -631,7 +664,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(195, 84);
+            this.button8.Location = new System.Drawing.Point(195, 58);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(119, 23);
             this.button8.TabIndex = 37;
@@ -641,7 +674,7 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(194, 58);
+            this.btn_Save.Location = new System.Drawing.Point(195, 88);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(120, 23);
             this.btn_Save.TabIndex = 36;
@@ -676,7 +709,7 @@
             // 
             this.button6.Location = new System.Drawing.Point(19, 153);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 23);
+            this.button6.Size = new System.Drawing.Size(73, 23);
             this.button6.TabIndex = 29;
             this.button6.Text = "READ POS";
             this.button6.UseVisualStyleBackColor = true;
@@ -755,22 +788,11 @@
             this.txt_x.Size = new System.Drawing.Size(100, 20);
             this.txt_x.TabIndex = 21;
             // 
-            // checkBox11
-            // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Location = new System.Drawing.Point(64, 42);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(45, 17);
-            this.checkBox11.TabIndex = 32;
-            this.checkBox11.Text = "Fly2";
-            this.checkBox11.UseVisualStyleBackColor = true;
-            this.checkBox11.CheckedChanged += new System.EventHandler(this.checkBox11_CheckedChanged);
-            // 
             // frmTrainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 532);
+            this.ClientSize = new System.Drawing.Size(501, 532);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -874,6 +896,8 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.ToolStripMenuItem alwaysOnTOPToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox12;
     }
 }
 

@@ -132,7 +132,15 @@ namespace Arkstone
             ReadProcessMemory(GetProcessHandle(), Address, Buffer, 4);
             return BitConverter.ToSingle(Buffer, 0);
         }
+        public static byte ReadByteFromPointer(int basePointer, int[] offsets)
+        {
+            // 1. Zieladresse berechnen
+            int finalAddress = GetPointerAddress(basePointer, offsets);
 
+            // 2. 1 Byte auslesen
+            byte[] buffer = ReadBytes(finalAddress, 1);
+            return buffer[0];
+        }
         public static double ReadDouble(int Address) //Read Double
         {
             byte[] Buffer = new byte[8];

@@ -288,12 +288,12 @@ namespace Arkstone
 
 
         /*----------------------------------
-WoW Offset Dumper 0.1
-by kynox
+        WoW Offset Dumper 0.1
+        by kynox
 
-Credits:
-bobbysing, Patrick, Dominik, Azorbix
------------------------------------*/
+        Credits:
+        bobbysing, Patrick, Dominik, Azorbix
+        -----------------------------------*/
 
         //        // Objects
         //#define createObjectManager 0x0046E0D0

@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D9169AC0-A75A-44D3-91A3-0829EBB6A012}|Arkstone.csproj|C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\classes\\classoffsets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9169AC0-A75A-44D3-91A3-0829EBB6A012}|Arkstone.csproj|solutionrelative:classes\\classoffsets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9169AC0-A75A-44D3-91A3-0829EBB6A012}|Arkstone.csproj|c:\\users\\maurice\\documents\\github\\arkstone\\forms\\frmtrainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9169AC0-A75A-44D3-91A3-0829EBB6A012}|Arkstone.csproj|solutionrelative:forms\\frmtrainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9169AC0-A75A-44D3-91A3-0829EBB6A012}|Arkstone.csproj|C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\forms\\frmtrainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D9169AC0-A75A-44D3-91A3-0829EBB6A012}|Arkstone.csproj|solutionrelative:forms\\frmtrainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9169AC0-A75A-44D3-91A3-0829EBB6A012}|Arkstone.csproj|C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\classes\\classmemory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9169AC0-A75A-44D3-91A3-0829EBB6A012}|Arkstone.csproj|solutionrelative:classes\\classmemory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "classMemory.cs",
+              "DocumentMoniker": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\Classes\\classMemory.cs",
+              "RelativeDocumentMoniker": "Classes\\classMemory.cs",
+              "ToolTip": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\Classes\\classMemory.cs",
+              "RelativeToolTip": "Classes\\classMemory.cs",
+              "ViewState": "AgIAAHUAAAAAAAAAAAAkwI4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T15:00:33.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmTrainer.cs",
+              "DocumentMoniker": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\Forms\\frmTrainer.cs",
+              "RelativeDocumentMoniker": "Forms\\frmTrainer.cs",
+              "ToolTip": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\Forms\\frmTrainer.cs",
+              "RelativeToolTip": "Forms\\frmTrainer.cs",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAewJAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T11:20:37.107Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "classOffsets.cs",
+              "DocumentMoniker": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\Classes\\classOffsets.cs",
+              "RelativeDocumentMoniker": "Classes\\classOffsets.cs",
+              "ToolTip": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\Classes\\classOffsets.cs",
+              "RelativeToolTip": "Classes\\classOffsets.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T11:24:23.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmTrainer.cs [Entwurf]",
+              "DocumentMoniker": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\Forms\\frmTrainer.cs",
+              "RelativeDocumentMoniker": "Forms\\frmTrainer.cs",
+              "ToolTip": "C:\\Users\\maurice\\Documents\\GitHub\\Arkstone\\Forms\\frmTrainer.cs [Entwurf]",
+              "RelativeToolTip": "Forms\\frmTrainer.cs [Entwurf]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-12T11:19:26.809Z",
+              "EditorCaption": " [Entwurf]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -62,6 +62,8 @@ namespace Arkstone
         private void readPlayerbaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             m_ReadMemory();
+            MessageBox.Show("");
+
             //Print
             //richTextBox1.Clear();
             //richTextBox1.Text += "Playerbase : " + Environment.NewLine
@@ -104,21 +106,27 @@ namespace Arkstone
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //Read game memory every tick and refresh variables
-            m_ReadMemory();
-            this.Text = "WoW 2.4.3" + " - " + Charname;
-            trackBar1.Value = Convert.ToInt32(playerSpeed);
-            lblWalkspeed.Text = trackBar1.Value.ToString();
-            trackBar2.Value = Convert.ToInt32(flySpeed);
-            lblFlySpeed.Text = trackBar2.Value.ToString();
-            trackBar3.Value = Convert.ToInt32(fallSpeed);
-            lblFallSpeed.Text = trackBar3.Value.ToString();
+            try
+            {
+                //Read game memory every tick and refresh variables
+                m_ReadMemory();
+                this.Text = "WoW 2.4.3" + " - " + Charname;
+                trackBar1.Value = Convert.ToInt32(playerSpeed);
+                lblWalkspeed.Text = trackBar1.Value.ToString();
+                trackBar2.Value = Convert.ToInt32(flySpeed);
+                lblFlySpeed.Text = trackBar2.Value.ToString();
+                trackBar3.Value = Convert.ToInt32(fallSpeed);
+                lblFallSpeed.Text = trackBar3.Value.ToString();
 
-            toolStripStatusLabel1.Text = "X: " + X.ToString();
-            toolStripStatusLabel2.Text = "Y: " + Y.ToString();
-            toolStripStatusLabel3.Text = "Z: " + Z.ToString();
-            toolStripStatusLabel4.Text = "MID: " + MapID.ToString();
-            toolStripStatusLabel5.Text = "Rot: " + Rotation.ToString();
+                toolStripStatusLabel1.Text = "X: " + X.ToString();
+                toolStripStatusLabel2.Text = "Y: " + Y.ToString();
+                toolStripStatusLabel3.Text = "Z: " + Z.ToString();
+                toolStripStatusLabel4.Text = "MID: " + MapID.ToString();
+                toolStripStatusLabel5.Text = "Rot: " + Rotation.ToString();
+            }catch(Exception ex)
+            { MessageBox.Show(ex.ToString()); }
+
+           
         }
 
         private void frmTrainer_FormClosing(object sender, FormClosingEventArgs e)
@@ -134,7 +142,11 @@ namespace Arkstone
 
         private void infoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("WoW Hack for patch 2.4.3 \nMade by SND \nOffsets and reversing data : \nOwnedcore \nUC-Forum");
+            MessageBox.Show("WoW Hack for patch 2.4.3 " +
+                "\nMade by SND " +
+                "\nOffsets and reversing data : " +
+                "\nOwnedcore " +
+                "\nUC-Forum");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -174,11 +186,13 @@ namespace Arkstone
             int pointer = classMemory.GetPointerAddress(0x00E29D28, new int[] { 0x26CC });
             classMemory.WriteBytes(pointer, new byte[] { Convert.ToByte(textBox1.Text) });
         }
-
+      
         private void button4_Click(object sender, EventArgs e)
         {
-            int pointer = classMemory.GetPointerAddress(0x00E29D28, new int[] { 0x26CC });
-            textBox1.Text = pointer.ToString();
+            int basePtr = 0x00E29D28;           // Basisadresse oder Moduladresse + Offset
+            int[] offsets = { 0x26CC };         // deine Offsets
+            byte value = classMemory.ReadByteFromPointer(basePtr, offsets);
+            textBox1.Text = value.ToString();
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -354,6 +368,11 @@ namespace Arkstone
             classMemory.WriteFloat(player_z, z);
             //Set Rotation
             classMemory.WriteFloat(classOffsets.tbc_player_rotation, rtv);
+            //Moveflag change
+            int pointer = classMemory.GetPointerAddress(0x00E29D28, new int[] { 0xC23 });
+            classMemory.WriteBytes(pointer, new byte[] { 128 });
+            Thread.Sleep(500);
+            classMemory.WriteBytes(pointer, new byte[] { 16 });
         }
         private void button5_Click(object sender, EventArgs e)
         {
@@ -468,6 +487,19 @@ namespace Arkstone
             {
                 ToggleFreeze(false);
             }
+        }
+
+        private void readHacksValuesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alwaysOnTOPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (TopMost != true)
+                TopMost = true;
+            else
+                TopMost = false;
         }
     }
 }

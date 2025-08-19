@@ -41,3 +41,15 @@ C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.csproj.GenerateResourc
 C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.csproj.CoreCompileInputs.cache
 C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.exe
 C:\Users\maurice\Desktop\Arkstone-main\obj\Debug\Arkstone.pdb
+C:\Users\maurice\Documents\GitHub\Arkstone\bin\Debug\Arkstone.exe.config
+C:\Users\maurice\Documents\GitHub\Arkstone\bin\Debug\Arkstone.exe
+C:\Users\maurice\Documents\GitHub\Arkstone\bin\Debug\Arkstone.pdb
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.csproj.AssemblyReference.cache
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.exe.config
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.frmLoader.resources
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.frmTrainer.resources
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.Properties.Resources.resources
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.csproj.GenerateResource.cache
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.csproj.CoreCompileInputs.cache
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.exe
+C:\Users\maurice\Documents\GitHub\Arkstone\obj\Debug\Arkstone.pdb
